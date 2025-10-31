@@ -13,7 +13,7 @@ OBJS = $(SRCS:.c=.o)
 all: server
 
 server: $(SRCS)
-	$(CC) $(CFLAGS) $(SRCS) -o server
+	$(CC) $(CFLAGS) $(SRCS) -o server_o
 
 clean:
 	rm -f server $(OBJS)
