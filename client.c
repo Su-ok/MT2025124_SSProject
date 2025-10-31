@@ -77,7 +77,7 @@ int main() {
         // closes the connection (caught by `bytes <= 0` above).
     }
 
-    printf("\nDisconnected from server.\n");
+    printf("\nDisconnected from the server.\n");
     close(sock);
     return 0;
 }

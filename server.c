@@ -1,5 +1,6 @@
 // Minimal server main and handler that use modularized implementation files.
-#include <bits/pthreadtypes.h>
+#define _GNU_SOURCE
+#include <pthread.h>
 #include "includes/server.h"
 
 // Globals for login management

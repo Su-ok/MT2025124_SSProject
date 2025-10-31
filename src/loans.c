@@ -26,7 +26,7 @@ void view_pending_loans(int sock)
 
     strcat(buffer, "\n--- Pending Loans ---\n");
     strcat(buffer, "ID  | Customer | Amount   | Status      | Assigned To\n");
-    strcat(buffer, "-------------------------------------------------------\n");
+    strcat(buffer, "---- ---------- ---------- ------------- --------------\n");
 
     while (read(fd, &loan, sizeof(Loan)) == sizeof(Loan))
     {
@@ -44,7 +44,7 @@ void view_pending_loans(int sock)
     }
     if (!found_pending)
     {
-        strcat(buffer, "No pending loans found.\n");
+        strcat(buffer, "Pending loans not found.\n");
     }
 
     lock.l_type = F_UNLCK;

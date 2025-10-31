@@ -5,7 +5,7 @@ void give_feedback(int accountId, const char *message)
     int fd = open(FEEDBACK_FILE, O_RDWR | O_CREAT, 0666);
     if (fd < 0)
     {
-        perror("Failed to open feedback file");
+        perror("Opening feedback file failed");
         return;
     }
 
@@ -18,7 +18,7 @@ void give_feedback(int accountId, const char *message)
 
     if (fcntl(fd, F_SETLKW, &lock) == -1)
     {
-        perror("Failed to lock feedback file");
+        perror("Locking feedback file failed");
         close(fd);
         return;
     }
@@ -32,7 +32,7 @@ void give_feedback(int accountId, const char *message)
     lseek(fd, 0, SEEK_END);
     if (write(fd, &fb, sizeof(Feedback)) != sizeof(Feedback))
     {
-        perror("Failed to write feedback record");
+        perror("Writing feedback record failed");
     }
 
     lock.l_type = F_UNLCK;
@@ -61,7 +61,7 @@ void view_feedbacks(int sock)
     char line[2048];
     int found = 0;
     buffer[0] = '\0';
-    strcat(buffer, "\n--- Feedbacks ---\n");
+    strcat(buffer, "\n------ Feedbacks ------\n");
     strcat(buffer, "Account | Message\n");
     strcat(buffer, "-------------------------------------------------------------\n");
 
