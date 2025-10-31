@@ -1,9 +1,7 @@
-// Minimal server main and handler that use modularized implementation files.
 #define _GNU_SOURCE
 #include <pthread.h>
 #include "includes/server.h"
 
-// Globals for login management
 pthread_spinlock_t login_lock;
 int logged_in_users[MAX_CLIENTS];
 
@@ -71,7 +69,7 @@ void *handle_client(void *sock_ptr)
         pthread_exit(NULL);
     }
 
-    // Login slot management
+    // Login mngmt
     pthread_spin_lock(&login_lock);
     for (int i = 0; i < MAX_CLIENTS; i++)
     {
